@@ -1,0 +1,21 @@
+{
+  "name": "mini-webpack",
+  "private": true,
+  "version": "1.0.0",
+  "description": "mini-webpack",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.33.1",
+  "devDependencies": {
+    "@types/node": "^26.3.0",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2"
+  }
+}
