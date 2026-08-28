@@ -20,12 +20,26 @@ importers:
 
   packages/compiler: {}
 
-  packages/generator: {}
+  packages/generator:
+    dependencies:
+      '@mini-webpack/graph':
+        specifier: workspace:*
+        version: link:../graph
 
-  packages/graph: {}
+  packages/graph:
+    dependencies:
+      '@mini-webpack/module':
+        specifier: workspace:*
+        version: link:../module
 
   packages/module:
     dependencies:
+      '@mini-webpack/parser':
+        specifier: workspace:*
+        version: link:../parser
+      '@mini-webpack/resolver':
+        specifier: workspace:*
+        version: link:../resolver
       '@mini-webpack/types':
         specifier: workspace:*
         version: link:../types
@@ -42,6 +56,15 @@ importers:
   packages/resolver: {}
 
   packages/runtime: {}
+
+  packages/transformer:
+    dependencies:
+      '@mini-webpack/graph':
+        specifier: workspace:*
+        version: link:../graph
+      '@mini-webpack/parser':
+        specifier: workspace:*
+        version: link:../parser
 
   packages/types: {}
 

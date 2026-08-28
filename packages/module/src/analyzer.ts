@@ -14,7 +14,7 @@ export function analyzeDependencies(
 
         dependencies.push({
             request: node.source,
-            resolvePath: '',
+            resolvedPath: '',
         });
     }
 

@@ -1,5 +1,5 @@
 {
-  "name": "@mini-webpack/module",
+  "name": "@mini-webpack/transformer",
   "private": true,
   "version": "1.0.0",
   "description": "",
@@ -14,8 +14,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.33.1",
   "dependencies": {
-    "@mini-webpack/parser": "workspace:*",
-    "@mini-webpack/resolver": "workspace:*",
-    "@mini-webpack/types": "workspace:*"
+    "@mini-webpack/graph": "workspace:*",
+    "@mini-webpack/parser": "workspace:*"
   }
 }

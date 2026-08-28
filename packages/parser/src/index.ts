@@ -12,7 +12,19 @@ export function parse(source: string): Program {
             .filter((node) => node.type === 'ImportDeclaration')
             .map((node) => ({
                 type: 'ImportDeclaration',
-                source: node.source.value
-            }))
+                source: node.source.value,
+                specifiers: node.specifiers.map((specifier) => {
+                    if (specifier.type !== 'ImportSpecifier') {
+                        throw new Error(`Unsupported import type: ${specifier.type}`);
+                    }
+                    return ({
+                        type: 'ImportSpecifier',
+                        imported: specifier.imported.type === 'Identifier'
+                            ? specifier.imported.name
+                            : specifier.imported.value,
+                        local: specifier.local.name
+                    })
+                }
+            )}))
     };
 }
