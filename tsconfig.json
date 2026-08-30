@@ -1,13 +1,14 @@
 {
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "strict": true,
-    "declaration": true,
-    "sourceMap": true,
-    "outDir": "dist",
-    "esModuleInterop": true,
-    "skipLibCheck": true
-  }
+  "files": [],
+  "references": [
+    { "path": "./packages/types" },
+    { "path": "./packages/parser" },
+    { "path": "./packages/resolver" },
+    { "path": "./packages/module" },
+    { "path": "./packages/graph" },
+    { "path": "./packages/transformer" },
+    { "path": "./packages/generator" },
+    { "path": "./packages/runtime" },
+    { "path": "./packages/compiler" }
+  ]
 }

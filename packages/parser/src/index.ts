@@ -25,6 +25,16 @@ export function parse(source: string): Program {
                         local: specifier.local.name
                     })
                 }
-            )}))
+                )
+            }))
     };
 }
+
+// const source = `
+// import { foo } from './foo.js';
+// import { bar as baz } from './bar.js';
+
+// console.log(foo());
+// `;
+
+// console.dir(parse(source), { depth: null, colors: true });

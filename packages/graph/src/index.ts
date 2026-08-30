@@ -109,9 +109,9 @@ export function detectCycles(graph: ModuleGraph): string[][] {
     return cycles;
 }
 
-const graph = buildModuleGraph(
-    "/learning/mini_webpack/examples/basic/src/index.js"
-);
+// const graph = buildModuleGraph(
+//     "/learning/mini_webpack/examples/basic/src/index.js"
+// );
 
 // console.dir(graph, { depth: null, colors: true });
 // console.dir(graph.modules, { depth: null, colors: true });
