@@ -45,8 +45,22 @@ export function parse(source: string): Program {
             node.declaration?.type === 'FunctionDeclaration'
         ) {
             body.push(
-                parseFunctionDeclaration(node.declaration)
+                parseFunctionDeclaration(
+                    node.declaration,
+                    true
+                )
             );
+
+            continue;
+        }
+
+        if (node.type === 'FunctionDeclaration') {
+            body.push(
+                parseFunctionDeclaration(
+                    node,
+                    false
+                )
+            )
 
             continue;
         }
@@ -62,7 +76,10 @@ export function parse(source: string): Program {
     };
 }
 
-function parseFunctionDeclaration(node: any): FunctionDeclaration {
+function parseFunctionDeclaration(
+    node: any,
+    exported: boolean
+): FunctionDeclaration {
     return {
         type: 'FunctionDeclaration',
         id: {
@@ -81,7 +98,8 @@ function parseFunctionDeclaration(node: any): FunctionDeclaration {
                 name: param.name
             }
         }),
-        body: parseBlockStatement(node.body)
+        body: parseBlockStatement(node.body),
+        exported
     }
 }
 

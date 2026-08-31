@@ -27,6 +27,7 @@ export interface FunctionDeclaration {
     id: Identifier;
     params: Identifier[];
     body: BlockStatement;
+    exported: boolean;
 }
 
 export interface BlockStatement {
@@ -71,12 +72,20 @@ export interface MemberExpression {
     property: Identifier;
 }
 
+export interface AssignmentExpression {
+    type: 'AssignmentExpression';
+    operator: '=';
+    left: Expression;
+    right: Expression;
+}
+
 export type Expression = 
     | Identifier
     | NumericLiteral
     | StringLiteral
     | CallExpression
-    | MemberExpression;
+    | MemberExpression
+    | AssignmentExpression;
 
 export interface VariableDeclarator {
     type: 'VariableDeclarator';

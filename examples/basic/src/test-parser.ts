@@ -2,8 +2,13 @@ import { parse } from '@mini-webpack/parser';
 
 const source = `
 import { bar } from './bar.js';
+
 export function foo() {
-  return 'foo';
+    return 'foo';
+}
+
+function test() {
+    return 'test';
 }
 `;
 
