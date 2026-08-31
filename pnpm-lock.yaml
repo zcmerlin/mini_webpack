@@ -18,6 +18,28 @@ importers:
         specifier: ^7.0.2
         version: 7.0.2
 
+  examples:
+    dependencies:
+      '@mini-webpack/generator':
+        specifier: workspace:*
+        version: link:../packages/generator
+      '@mini-webpack/graph':
+        specifier: workspace:*
+        version: link:../packages/graph
+      '@mini-webpack/parser':
+        specifier: workspace:*
+        version: link:../packages/parser
+      '@mini-webpack/transformer':
+        specifier: workspace:*
+        version: link:../packages/transformer
+      '@mini-webpack/types':
+        specifier: workspace:*
+        version: link:../packages/types
+    devDependencies:
+      '@types/node':
+        specifier: ^26.3.0
+        version: 26.3.0
+
   packages/compiler: {}
 
   packages/generator:
@@ -25,6 +47,9 @@ importers:
       '@mini-webpack/graph':
         specifier: workspace:*
         version: link:../graph
+      '@mini-webpack/types':
+        specifier: workspace:*
+        version: link:../types
 
   packages/graph:
     dependencies:
@@ -65,6 +90,9 @@ importers:
       '@mini-webpack/parser':
         specifier: workspace:*
         version: link:../parser
+      '@mini-webpack/types':
+        specifier: workspace:*
+        version: link:../types
 
   packages/types: {}
 

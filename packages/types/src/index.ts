@@ -4,7 +4,11 @@ export interface Program {
 }
 
 export type Statement =
-  | ImportDeclaration;
+  | ImportDeclaration
+  | VariableDeclaration
+  | FunctionDeclaration
+  | ReturnStatement
+  | ExpressionStatement;
   
 export interface ImportDeclaration {
     type: 'ImportDeclaration';
@@ -18,9 +22,36 @@ export interface ImportSpecifier {
     local: string;
 }
 
+export interface FunctionDeclaration {
+    type: 'FunctionDeclaration';
+    id: Identifier;
+    params: Identifier[];
+    body: BlockStatement;
+}
+
+export interface BlockStatement {
+    type: 'BlockStatement';
+    body: Statement[];
+}
+
+export interface ReturnStatement {
+    type: 'ReturnStatement';
+    argument: Expression | null;
+}
+
+export interface ExpressionStatement {
+    type: 'ExpressionStatement';
+    expression: Expression;
+}
+
 export interface Identifier {
     type: 'Identifier';
     name: string;
+}
+
+export interface StringLiteral {
+    type: 'StringLiteral';
+    value: string;
 }
 
 export interface NumericLiteral {
@@ -43,6 +74,7 @@ export interface MemberExpression {
 export type Expression = 
     | Identifier
     | NumericLiteral
+    | StringLiteral
     | CallExpression
     | MemberExpression;
 
@@ -57,3 +89,4 @@ export interface VariableDeclaration {
     kind: 'const';
     declarations: VariableDeclarator[];
 }
+
