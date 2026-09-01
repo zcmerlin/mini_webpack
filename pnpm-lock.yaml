@@ -47,6 +47,9 @@ importers:
       '@mini-webpack/graph':
         specifier: workspace:*
         version: link:../graph
+      '@mini-webpack/transformer':
+        specifier: workspace:*
+        version: link:../transformer
       '@mini-webpack/types':
         specifier: workspace:*
         version: link:../types

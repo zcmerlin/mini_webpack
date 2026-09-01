@@ -9,6 +9,8 @@ import type {
     ExpressionStatement,
     AssignmentExpression
 } from '@mini-webpack/types';
+import type { ModuleGraph } from '@mini-webpack/graph';
+import { transformModule } from '@mini-webpack/transformer';
 
 export function generate(program: Program): string {
     return program.body
@@ -120,4 +122,64 @@ function generateAssignmentExpression(
     return `${generateExpression(node.left)} ${node.operator} ${generateExpression(
         node.right
     )}`;
+}
+
+export function generateBundle(
+    graph: ModuleGraph,
+    entry: string
+): string {
+    const modules = [...graph.modules.values()]
+        .map(module => {
+            const program = transformModule(
+                module.source,
+                module.path,
+                graph
+            );
+
+            const code = generate(program);
+
+            const moduleId = graph.getModuleId(module.path);
+
+            return `${moduleId}: function(module, __exports) {
+                ${indent(code, 4)}
+            }`;
+        })
+        .join(',\n');
+    
+    const entryId = graph.getModuleId(entry);
+
+    return `
+        const __modules = {
+            ${indent(modules, 4)}
+        };
+
+        const __cache = {};
+
+        function __require(id) {
+            if (__cache[id]) {
+                return __cache[id].exports;
+            }
+
+            const module = {
+                exports: {}
+            };
+
+            __cache[id] = module;
+
+            __module[id](module, module.exports);
+
+            return module.exports;
+        }
+
+        __require(${entryId});
+    `.trim();
+}
+
+function indent(code: string, spaces: number): string {
+    const prefix = ' '.repeat(spaces);
+
+    return code
+        .split('\n')
+        .map(line => prefix + line)
+        .join('\n');
 }

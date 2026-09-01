@@ -13,6 +13,7 @@
   ],
   "references": [
     { "path": "../types" },
-    { "path": "../graph" }
+    { "path": "../graph" },
+    { "path": "../transformer" }
   ]
 }
